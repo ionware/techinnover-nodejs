@@ -12,8 +12,8 @@ https://us-central1-crafty-key-331919.cloudfunctions.net/reminder-api
 3. **POST /** - Create a new reminder. NOTE the data structure of creating a reminder describe as:
    ```json
    {
-     user: 2,
-     description: "Walk a mile",
-     date: "2022-02-11 22:43:00"
+     "user": 2,
+     "description": "Walk a mile",
+     "date": "2022-02-11 22:43:00"
    }
    ```
