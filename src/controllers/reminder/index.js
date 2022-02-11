@@ -21,7 +21,7 @@ async function rootReminderController(req, res) {
     return getReminderById(req, res);
   }
 
-  return res.status(403).json({ message: 'Action not supported.' });
+  return res.status(405).json({ message: 'Action not supported.' });
 }
 
 module.exports = rootReminderController;
