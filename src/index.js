@@ -9,7 +9,7 @@ async function app(req, res) {
   const { path } = req;
   let segments = path.split('/').filter((val) => !!val);
   // break ID param from path.
-  if (segments.length) req.params = { id: segments[0] };
+  if (segments.length) req.params.id = segments[0];
 
   try {
     return await reminderController(req, res);
