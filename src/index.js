@@ -1,4 +1,9 @@
+const db = require('./db/connect');
+const Reminder = require('./source/Reminder');
 const reminderController = require('./controllers/reminder/index');
+console.log(process.env.DB_HOST);
+global.db = db;
+global.Reminder = Reminder;
 
 async function app(req, res) {
   const { path } = req;

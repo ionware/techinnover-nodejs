@@ -8,14 +8,15 @@ async function createReminder(req, res) {
   }
 
   // TODO: also time is clearly in UTC format. Use moment Lib.
-  const reminder = await global.Reminder.create({
+  const ref = await global.Reminder.create({
     user,
     description,
-    created_at: date,
+    date,
   });
 
-  // TODO: pull response that matches assessment.
-  return res.status(201).json({ id: reminder.id, status: true });
+  const reminder = await global.Reminder.getById(ref.insertId);
+
+  return res.status(201).json(reminder[0]);
 }
 
 module.exports = createReminder;
