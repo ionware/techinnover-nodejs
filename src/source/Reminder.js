@@ -1,3 +1,4 @@
+const moment = require('moment');
 const resolver = require('../utils/query-resolver');
 
 /**
@@ -5,9 +6,20 @@ const resolver = require('../utils/query-resolver');
  * @returns Promise<object>
  */
 const getReminders = async (filters) => {
-  return resolver(
-    `SELECT id, user, description, created_at as date FROM reminders ORDER BY id ASC`
-  );
+  const query = `SELECT id, user, description, created_at as date 
+    FROM reminders
+    ${filters['user'] ? `WHERE user = ${filters['user']}` : ''}
+    ${
+      filters['after']
+        ? `${filters['user'] ? 'AND' : 'WHERE'} created_at > '${moment(
+            parseInt(filters['after'])
+          ).format('YYYY-MM-DD hh:mm:ss')}'`
+        : ''
+    }
+    ORDER BY id ASC
+   `;
+
+  return resolver(query);
 };
 
 /**
@@ -28,7 +40,8 @@ const createReminder = async (data = {}) => {
  */
 const getReminderById = async (id) => {
   return resolver(
-    `SELECT id, user, description, created_at as date FROM reminders WHERE id = ${id}`
+    `SELECT id, user, description, created_at as date 
+      FROM reminders WHERE id = ${id}`
   );
 };
 
