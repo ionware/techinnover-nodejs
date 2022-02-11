@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "env-cmd functions-framework --target test --signature-type http",
+    "start": "env-cmd functions-framework --target reminder --signature-type http",
     "deploy": "gcloud functions deploy reminder-api --entry-point=reminder --runtime=nodejs16 --trigger-http --env-vars-file .env.yaml",
     "watch": "npm-watch start",
     "format": "prettier --write \"src/**/*.+(js|jsx|json|yml|yaml|md)\""

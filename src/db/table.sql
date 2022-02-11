@@ -1,0 +1,6 @@
+CREATE TABLE reminder (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  user INTEGER NOT NULL,
+  description INTEGER NOT NULL,
+  created_at DATETIME NOT NULL,
+);
